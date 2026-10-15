@@ -9,4 +9,4 @@ Welcome to the source code of my personal portfolio website! Built with a clean 
 - **Featured Projects:** Direct links to interactive machine learning and data science repositories.
 
 ## 🚀 Live View
-You can view the structured code right here or deploy it via GitHub Pages!
+https://aaimee-gogoi.github.io/PORTFOLIOO/
