@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aaimee Gogoi | Data Science & AI Portfolio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+
+    :root {
+      --bg: #f4f2ea;
+      --card-bg: #ffffff;
+      --forest: #153d2d;
+      --forest-light: #1f4e38;
+      --gold: #d4a373;
+      --gold-dark: #b58354;
+      --text: #2b3a32;
+      --muted: #657268;
+      --border: rgba(21, 61, 45, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* Navigation */
+    nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(21, 61, 45, 0.95); backdrop-filter: blur(10px); color: white; display: flex; justify-content: space-between; align-items: center; padding: 18px 8vw; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    .logo { font-size: 1.2rem; font-weight: 700; color: #fdf6e2; letter-spacing: 0.5px; }
+    .logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links a { color: #e2e8e4; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* Hero Section */
+    header.hero { min-height: 100vh; background: linear-gradient(135deg, #0d281d, #153d2d); color: white; display: flex; align-items: center; justify-content: space-between; padding: 140px 8vw 80px; gap: 40px; flex-wrap: wrap; }
+    .hero-content { max-width: 600px; }
+    .badge { display: inline-block; background: rgba(212, 163, 115, 0.15); color: var(--gold); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 20px; border: 1px solid rgba(212, 163, 115, 0.3); }
+    .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.2rem); line-height: 1.1; margin-bottom: 20px; }
+    .hero-content h1 span { color: var(--gold); }
+    .hero-content p { color: #c8d5cb; font-size: 1.05rem; margin-bottom: 30px; }
+    .btn-group { display: flex; gap: 15px; flex-wrap: wrap; }
+    .btn { padding: 12px 28px; border-radius: 30px; font-weight: 600; text-decoration: none; transition: 0.3s; font-size: 0.95rem; }
+    .btn-primary { background: var(--gold); color: #11251c; }
+    .btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); }
+    .btn-outline { border: 2px solid rgba(255,255,255,0.3); color: white; }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    .hero-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 35px; border-radius: 24px; text-align: center; backdrop-filter: blur(10px); min-width: 280px; }
+    .hero-card .icon { font-size: 3rem; margin-bottom: 15px; }
+    .hero-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 8px; }
+    .hero-card p { font-size: 0.9rem; color: #a3b8aa; }
+
+    /* Container & Sections */
+    .container { max-width: 1200px; margin: 0 auto; padding: 100px 8vw; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--forest); margin-bottom: 15px; }
+    .section-subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 50px; }
+    .tag-category { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; color: var(--gold-dark); margin-bottom: 10px; display: block; }
+
+    /* About Section */
+    .about-box { background: var(--card-bg); border: 1px solid var(--border); padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); font-size: 1.1rem; color: #3d4f45; }
+
+    /* Skills Grid */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+    .skill-card { background: var(--card-bg); border: 1px solid var(--border); padding: 30px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.02); }
+    .skill-card h3 { font-family: 'Playfair Display', serif; color: var(--forest); font-size: 1.25rem; margin-bottom: 20px; }
+    .skill-list { display: flex; flex-direction: column; gap: 12px; }
+    .skill-item { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 500; color: var(--text); }
+    .skill-item i { font-size: 1.4rem; }
+
+    /* Cards Grid */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(21, 61, 45, 0.08); border-color: var(--gold); }
+    .card.featured { background: var(--forest); color: white; border: none; }
+    .card.featured h3 { color: #fdf6e2; }
+    .card.featured p { color: #c8d5cb; }
+    .card.featured .link { color: var(--gold); }
+    
+    .card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--forest); margin-bottom: 8px; }
+    .card p { font-size: 0.95rem; color: var(--muted); margin-bottom: 20px; }
+    .link { font-weight: 600; font-size: 0.9rem; color: var(--forest-light); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+    .link:hover { text-decoration: underline; }
+
+    /* Certification & Achievement Boxes */
+    .cert-issuer-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; padding: 30px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+    .cert-issuer-box h3 { font-family: 'Playfair Display', serif; color: var(--forest); font-size: 1.3rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+    .cert-list { list-style: none; margin-bottom: 15px; }
+    .cert-list li { padding: 4px 0; color: var(--muted); font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
+    .cert-list li::before { content: "▪"; color: var(--gold-dark); }
+    .cert-links-row { display: flex; gap: 15px; flex-wrap: wrap; }
+
+    /* Education Box */
+    .edu-card { background: var(--card-bg); border: 1px solid var(--border); padding: 35px; border-radius: 24px; display: flex; align-items: center; gap: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+    .edu-icon { width: 70px; height: 70px; background: var(--forest); color: var(--gold); border-radius: 20px; display: grid; place-items: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0; }
+    .edu-info h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--forest); margin-bottom: 6px; }
+    .edu-info p { color: var(--muted); font-size: 0.95rem; }
+
+    /* Contact Section */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .contact-item { background: var(--card-bg); border: 1px solid var(--border); padding: 25px; border-radius: 20px; text-decoration: none; color: var(--text); display: block; transition: 0.3s; }
+    .contact-item:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .contact-item h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--forest); margin-bottom: 5px; }
+    .contact-item p { font-size: 0.9rem; color: var(--muted); }
+    .contact-item.resume-highlight { background: linear-gradient(135deg, #153d2d, #1f4e38); color: white; border: 1px solid var(--gold); }
+    .contact-item.resume-highlight h4 { color: var(--gold); }
+    .contact-item.resume-highlight p { color: #d5dfd3; }
+
+    /* Footer */
+    footer { background: #0b1f16; color: #8fa397; text-align: center; padding: 40px 20px; font-size: 0.9rem; }
+    footer span { color: var(--gold); }
+
+    @media(max-width: 768px) {
+      .nav-links { display: none; }
+      header.hero { padding-top: 120px; }
+      .edu-card { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">🌿 <span>Aaimee Gogoi</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="top">
+    <div class="hero-content">
+      <span class="badge">DATA SCIENCE & ARTIFICIAL INTELLIGENCE</span>
+      <h1>Hello, I'm <span>Aaimee Gogoi</span></h1>
+      <p>A passionate 3rd-year B.Sc. (Hons.) student at IIT Guwahati. Specializing in machine learning models, statistical analysis, and interactive data applications.</p>
+      <div class="btn-group">
+        <a href="#projects" class="btn btn-primary">Explore Projects</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="icon">✨</div>
+      <h3>IIT Guwahati</h3>
+      <p>B.Sc. Data Science & AI · 3rd Year</p>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <div class="container" id="about">
+    <span class="tag-category">01 / INTRODUCTION</span>
+    <h2 class="section-title">About Me</h2>
+    <p class="section-subtitle">A curious mind exploring patterns in data and building intelligent solutions.</p>
+    
+    <div class="about-box">
+      <p>I am a third-year student pursuing a Bachelor of Science (Hons.) in Data Science and Artificial Intelligence at the <strong>Indian Institute of Technology, Guwahati</strong>. I enjoy transforming raw datasets into clean, actionable insights and developing interactive web apps using Python, Scikit-learn, and Streamlit.</p>
+      <br>
+      <p>Recognized with the <strong>Dr. Banikanta Kakati Award</strong> for academic excellence. I am constantly learning, building, and expanding my technical expertise in quantitative analytics and machine learning systems.</p>
+    </div>
+  </div>
+
+  <!-- Skills Section -->
+  <div class="container" id="skills" style="padding-top: 0;">
+    <span class="tag-category">02 / EXPERTISE</span>
+    <h2 class="section-title">Technical Toolkit</h2>
+    <p class="section-subtitle">Technologies and tools I use to build projects.</p>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Programming</h3>
+        <div class="skill-list">
+          <div class="skill-item"><i class="devicon-python-plain colored"></i> Python</div>
+          <div class="skill-item"><i class="devicon-r-original colored"></i> R Programming</div>
+          <div class="skill-item"><i class="devicon-azuresqldatabase-plain colored"></i> SQL</div>
+          <div class="skill-item"><i class="devicon-c-plain colored"></i> C & Java</div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Data Science & ML</h3>
+        <div class="skill-list">
+          <div class="skill-item"><i class="devicon-pandas-plain colored"></i> Pandas & NumPy</div>
+          <div class="skill-item"><i class="devicon-scikitlearn-plain colored"></i> Scikit-learn</div>
+          <div class="skill-item"><i class="devicon-matplotlib-plain colored"></i> Matplotlib & Seaborn</div>
+          <div class="skill-item"><i class="devicon-streamlit-plain colored"></i> Streamlit</div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Platforms & Tools</h3>
+        <div class="skill-list">
+          <div class="skill-item"><i class="devicon-jupyter-plain colored"></i> Jupyter Notebook</div>
+          <div class="skill-item"><i class="devicon-github-original"></i> Git & GitHub</div>
+          <div class="skill-item"><i class="devicon-latex-original"></i> LaTeX (Overleaf)</div>
+          <div class="skill-item">📊 Power BI & Excel</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certificates Section -->
+  <div class="container" id="certificates" style="padding-top: 0;">
+    <span class="tag-category">03 / CREDENTIALS</span>
+    <h2 class="section-title">Certificates</h2>
+    <p class="section-subtitle">Verified professional credentials and continuous learning.</p>
+
+    <div class="cert-issuer-box">
+      <h3>🔴 Cognitive AI / Coursera</h3>
+      <ul class="cert-list">
+        <li>Machine Learning with Python</li>
+        <li>Data Science with Python</li>
+      </ul>
+      <div class="cert-links-row">
+        <a href="https://github.com/AAIMEE-GOGOI/CERTIFICATES/blob/main/Machine_Learning_with_python.pdf" target="_blank" class="link">📄 View ML Certificate →</a>
+        <a href="https://github.com/AAIMEE-GOGOI/CERTIFICATES/blob/main/Python_For_Data_Science.pdf" target="_blank" class="link">📄 View Data Science Certificate →</a>
+      </div>
+    </div>
+
+    <div class="cert-issuer-box">
+      <h3>🎓 IIT Guwahati × Coursera</h3>
+      <ul class="cert-list">
+        <li>Machine Learning Certificate</li>
+      </ul>
+      <div class="cert-links-row">
+        <a href="https://github.com/AAIMEE-GOGOI/CERTIFICATES/blob/main/Machine_Learning_Certificate.pdf" target="_blank" class="link">📄 View Certificate →</a>
+      </div>
+    </div>
+
+    <div class="cert-issuer-box">
+      <h3>🔵 Google</h3>
+      <ul class="cert-list">
+        <li>Generative AI Fundamentals & Workflows</li>
+      </ul>
+      <div class="cert-links-row">
+        <a href="https://github.com/AAIMEE-GOGOI/CERTIFICATES/blob/main/Generative_AI_Certificate.pdf" target="_blank" class="link">📄 View Certificate →</a>
+      </div>
+    </div>
+
+    <div class="cert-issuer-box">
+      <h3>🟣 IBM</h3>
+      <ul class="cert-list">
+        <li>Data Literacy Certificate</li>
+      </ul>
+      <div class="cert-links-row">
+        <a href="https://github.com/AAIMEE-GOGOI/CERTIFICATES/blob/main/Data_Literacy_Certificate.pdf" target="_blank" class="link">📄 View Certificate →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Personal Achievements Section -->
+  <div class="container" id="achievements" style="padding-top: 0;">
+    <span class="tag-category">04 / RECOGNITION</span>
+    <h2 class="section-title">Personal Achievements</h2>
+    <p class="section-subtitle">Awards, honors, and extracurricular distinctions.</p>
+
+    <div class="cert-issuer-box">
+      <h3>🏆 Dr. Banikanta Kakati Award</h3>
+      <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 12px;">Higher Secondary academic achievement awarded under the Pragyan Bharati Scheme, Government of Assam.</p>
+      <div class="cert-links-row">
+        <a href="https://github.com/AAIMEE-GOGOI" target="_blank" class="link">📄 View Achievement →</a>
+      </div>
+    </div>
+
+    <div class="cert-issuer-box">
+      <h3>💃 Dance — NSQF Level 3</h3>
+      <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 6px;"><strong>Grade:</strong> A-</p>
+      <div class="cert-links-row" style="margin-top: 10px;">
+        <a href="https://github.com/AAIMEE-GOGOI" target="_blank" class="link">📄 View Certificate →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects Section -->
+  <div class="container" id="projects" style="padding-top: 0;">
+    <span class="tag-category">05 / PORTFOLIO</span>
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-subtitle">A collection of my machine learning and data science repositories.</p>
+
+    <div class="grid-3">
+      <div class="card featured">
+        <div>
+          <span style="color: var(--gold); font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; display: block; margin-bottom: 8px;">STREAMLIT & ML</span>
+          <h3>Spotify Artist & Song Intelligence</h3>
+          <p>Music intelligence dashboard built with Random Forest popularity prediction and K-Means clustering on audio features.</p>
+        </div>
+        <a href="https://github.com/AAIMEE-GOGOI/Spotify-Artist-Analysis" target="_blank" class="link" style="color: var(--gold);">View Repository →</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="tag-category">EDA & CLASSIFICATION</span>
+          <h3>Nykaa Product Success Prediction</h3>
+          <p>Exploratory data analysis and machine learning models predicting product market success based on pricing attributes.</p>
+        </div>
+        <a href="https://github.com/AAIMEE-GOGOI/Nykaa-Products-Success-Prediction" target="_blank" class="link">View Repository →</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="tag-category">API & RECOMMENDATION</span>
+          <h3>Movie Recommendation System</h3>
+          <p>Content-based movie recommendation engine using feature vectorization, cosine similarity, and TMDB API integration.</p>
+        </div>
+        <a href="https://github.com/AAIMEE-GOGOI/BingeFlix" target="_blank" class="link">View Repository →</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="tag-category">DATA VISUALIZATION</span>
+          <h3>Olympic Data Analysis</h3>
+          <p>Detailed exploratory analysis of Summer Olympics datasets to extract insights on historical medal tallies and athlete trends.</p>
+        </div>
+        <a href="https://github.com/AAIMEE-GOGOI/Olympic-Data-Analysis" target="_blank" class="link">View Repository →</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="tag-category">TIME SERIES · ONGOING</span>
+          <h3>Energy Consumption Anomaly Intelligence</h3>
+          <p>Analyzing electricity consumption time-series data to identify abnormal usage patterns and forecast demand spikes.</p>
+        </div>
+         
+    </div>
+  </div>
+
+  <!-- Education Section -->
+  <div class="container" id="education" style="padding-top: 0;">
+    <span class="tag-category">06 / ACADEMIC BACKGROUND</span>
+    <h2 class="section-title">Education</h2>
+    <p class="section-subtitle">My academic journey in higher education.</p>
+
+    <div class="edu-card">
+      <div class="edu-icon">IITG</div>
+      <div class="edu-info">
+        <h3>Indian Institute of Technology, Guwahati</h3>
+        <p><strong>Bachelor of Science (Hons.) in Data Science and Artificial Intelligence</strong></p>
+        <p style="margin-top: 5px;">2024 — 2028 (Expected) &nbsp;|&nbsp; 3rd Year Student</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section & Resume -->
+  <div class="container" id="contact" style="padding-top: 0;">
+    <span class="tag-category">07 / GET IN TOUCH</span>
+    <h2 class="section-title">Contact & Resume</h2>
+    <p class="section-subtitle">Let's connect for collaborations or professional opportunities.</p>
+
+    <div class="contact-grid">
+      <a href="https://github.com/AAIMEE-GOGOI/RESUME/blob/main/IIT_Guwahati_R%C3%A9sum%C3%A9%20(2).pdf" target="_blank" class="contact-item resume-highlight">
+        <h4>📄 Professional Resume</h4>
+        <p>View or download my LaTeX formatted resume</p>
+      </a>
+
+      <a href="https://github.com/AAIMEE-GOGOI" target="_blank" class="contact-item">
+        <h4>🐙 GitHub Profile</h4>
+        <p>github.com/AAIMEE-GOGOI</p>
+      </a>
+
+      <a href="https://linkedin.com" target="_blank" class="contact-item">
+        <h4>💼 LinkedIn Profile</h4>
+        <p>Connect with me professionally</p>
+      </a>
+
+      <a href="mailto:g.aaimee@op.iitg.ac.in" class="contact-item">
+        <h4>✉️ Email Address</h4>
+        <p>g.aaimee@op.iitg.ac.in</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Aaimee Gogoi. Built with code & curiosity <span>🌿</span></p>
+  </footer>
+
+</body>
+</html>
